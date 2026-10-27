@@ -1,0 +1,17 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+  "build-dev": ".\\tailwindcss.exe -i ./css/style.css -o ./css/output.css --watch",
+  "build-prod": ".\\tailwindcss.exe -i ./css/style.css -o ./css/output.css --minify"
+},
+
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^4.3.3"
+  }
+}

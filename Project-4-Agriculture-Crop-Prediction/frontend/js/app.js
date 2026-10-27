@@ -18,9 +18,28 @@ const resultPlaceholder = document.getElementById("resultPlaceholder");
 const resultContent = document.getElementById("resultContent");
 const predictionValue = document.getElementById("predictionValue");
 const downloadBtn = document.getElementById("downloadBtn");
+const liveClock = document.getElementById("liveClock");
+const liveDate = document.getElementById("liveDate");
 
 let lastPrediction = null;
 let importanceChart = null;
+
+function updateLiveClock() {
+  if (!liveClock || !liveDate) return;
+
+  const now = new Date();
+  liveClock.textContent = now.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+  liveDate.textContent = now.toLocaleDateString([], {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
 
 // --------------------------------------------------
 // Load options (crops, states, feature importances)
@@ -271,4 +290,6 @@ Model: Random Forest Regressor (94.63% accuracy)
 // --------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   loadOptions();
+  updateLiveClock();
+  window.setInterval(updateLiveClock, 1000);
 });
